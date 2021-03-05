@@ -1,0 +1,55 @@
+
+<div class="header">
+  <div class="ion-text-center">
+    <ion-icon class="menu" src="assets/icon/menu.svg"></ion-icon>
+    <img src="assets/money_logo.png" alt="">
+    <img class="avatar" src="assets/salif.jpeg" alt="">
+  </div>
+  <div class="solde">
+    <span>Mon solde disponible</span>
+    <h1>7500000 FCFA</h1>
+    <span>Mise à jour le 03/03/21 à 14:10</span>
+  </div>
+</div>
+<ion-item routerLink="/depot">
+  <ion-icon src="assets/icon/depot.svg"></ion-icon>
+  <ion-label>Dépôt</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/retrait">
+  <ion-icon src="assets/icon/retrait.svg"></ion-icon>
+  <ion-label>Retrait</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+
+<ion-item routerLink="/transaction" button>
+  <ion-icon src="assets/icon/transaction.svg"></ion-icon>
+  <ion-label>Mes transactions</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/transaction" *ngIf="myData" button>
+  <ion-icon src="assets/icon/all-transaction.svg"></ion-icon>
+  <ion-label>Toutes les transactions</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/commission" *ngIf="myData" button>
+  <ion-icon src="assets/icon/commis.svg"></ion-icon>
+  <ion-label>Mes commissions</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/calculator" button>
+  <ion-icon src="assets/icon/calculator.svg"></ion-icon>
+  <ion-label>Calculateur de frais</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item (click)="deconnexion()" button>
+  <ion-icon src="assets/icon/exit.svg"></ion-icon>
+  <ion-label>Déconnexion</ion-label>
+</ion-item>
+
