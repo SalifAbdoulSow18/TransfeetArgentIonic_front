@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import {AuthentificationService} from '../../services/authentification.service';
 import {Router} from '@angular/router';
-import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-agence',
-  templateUrl: './agence.page.html',
-  styleUrls: ['./agence.page.scss'],
+  selector: 'app-slide-menu',
+  templateUrl: './slide-menu.page.html',
+  styleUrls: ['./slide-menu.page.scss'],
 })
-export class AgencePage implements OnInit {
+export class SlideMenuPage implements OnInit {
   myData: boolean;
+
   constructor(private authService: AuthentificationService, private router: Router) {
     // Pour l'affichage des commissions
     if (localStorage.getItem('role') === 'ROLE_AdminAgence') {
@@ -20,7 +21,6 @@ export class AgencePage implements OnInit {
   }
 
   ngOnInit() {}
-  // le deconnexion
   deconnexion() {
     Swal.fire({
       title: 'Are you sure to disconnect?',
@@ -35,6 +35,4 @@ export class AgencePage implements OnInit {
       }
     });
   }
-
-
 }

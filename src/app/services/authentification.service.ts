@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -36,16 +37,34 @@ export class AuthentificationService {
           // @ts-ignore
           if (localStorage.getItem('archive') === 'false') {
             if (localStorage.getItem('role') === 'ROLE_AdminAgence' || localStorage.getItem('role') === 'ROLE_UserAgence') {
-              console.log(localStorage.getItem('role'));
+              // console.log(localStorage.getItem('role'));
               this.router.navigate(['/agence']);
             } else {
-              return 'une erreur';
+              Swal.fire({
+                icon: 'error',
+                title: 'You are not allowed!',
+                text: 'Verified your data',
+                confirmButtonColor: '#d33'
+              });
             }
           } else {
-            return 'une erreur allez chez ladmin';
+            Swal.fire({
+              icon: 'error',
+              title: 'You are not allowed!',
+              text: 'Ask the administration!',
+              confirmButtonColor: '#d33'
+            });
           }
         })
       ) ;
+  }
+
+  // verifier la connexion
+  isLogin() {
+    if (localStorage.getItem('token')) {
+      return true;
+    }
+    return false;
   }
  // recuperation du token
   getToken(key: any) {

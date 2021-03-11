@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'transaction',
     loadChildren: () => import('./pages/transaction/transaction.module').then( m => m.TransactionPageModule)
   },
+  {
+    path: 'footer',
+    loadChildren: () => import('./pages/footer/footer.module').then( m => m.FooterPageModule)
+  },
+  {
+    path: 'slide-menu',
+    loadChildren: () => import('./pages/slide-menu/slide-menu.module').then( m => m.SlideMenuPageModule)
+  },
 ];
 
 @NgModule({

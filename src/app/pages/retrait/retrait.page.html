@@ -9,24 +9,78 @@
         <ion-label>Retrait</ion-label>
       </div>
       <hr>
-
     </div>
-    <!--<div class="form ion-text-center">
-      <form>
-        <ion-item>
-          <ion-label>Username</ion-label>
-          <ion-input  required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <ion-input required></ion-input>
-        </ion-item>
-        <h6>Mot de passe oublié?</h6>
-        <ion-button type="submit" expand="block" shape="round">Se connecter</ion-button>
-      </form>
-    </div>-->
+    <div class="content-form-depot">
+      <ion-item>
+        <ion-label position="floating">Code Transaction</ion-label>
+        <ion-input placeholder="DF6H76"></ion-input>
+      </ion-item>
+      <div id="content-menu-choice" padding>
+        <div class="content-menu" (click)="ShowAndHide(1)">
+          Bénéficiare
+          <div class="menu-bar-bottom" [hidden]="hide"></div>
+        </div>
+
+        <div class="content-menu" type="button" (click)="ShowAndHide(2)">
+          Emmetteur
+          <div class="menu-bar-bottom" [hidden]="!hide"></div>
+        </div>
+      </div>
+      <div [hidden]="hide" id="content-form-emmeteur">
+        <form>
+          <ion-item style="margin: 3%">
+            <ion-label position="floating">Telephone</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nom Complet</ion-label>
+            <ion-input placeholder="Salif A. SOW"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone</ion-label>
+            <ion-input placeholder="784203878"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Montant</ion-label>
+            <ion-input placeholder="300000"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date Envoie</ion-label>
+            <ion-input placeholder="21-08-20"></ion-input>
+          </ion-item>
+        </form>
+      </div>
+
+      <div [hidden]="!hide" id="content-form-beneficiaire">
+        <form>
+          <ion-item>
+            <ion-label>CNI</ion-label>
+            <ion-input placeholder="FFG434232665NG43434"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nom Complet</ion-label>
+            <ion-input placeholder="Seydou O. TALL"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Telephone</ion-label>
+            <ion-input placeholder="784343878"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Montant</ion-label>
+            <ion-input placeholder="300000"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date Envoie</ion-label>
+            <ion-input placeholder="21-08-20"></ion-input>
+          </ion-item>
+        </form>
+
+      </div>
+      <ion-button expand="block" shape="round">Retirer</ion-button>
+    </div>
   </div>
-  <app-tabs></app-tabs>
 </ion-content>
 
 

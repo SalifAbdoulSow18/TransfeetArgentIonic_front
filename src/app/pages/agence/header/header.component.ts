@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../../../services/authentification.service';
 import {Router} from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -20,8 +21,18 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
   deconnexion() {
+    Swal.fire({
+      title: 'Are you sure to disconnect?',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, disconnect!'
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.authService.logout() ;
-        this.router.navigate(['/home']) ;
+        this.router.navigate(['/login']) ;
+      }
+    });
   }
 
 }

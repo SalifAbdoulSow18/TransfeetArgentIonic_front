@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthentificationService} from '../../services/authentification.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {log} from 'util';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +32,14 @@ export class LoginPage implements OnInit {
     this.submitted = true;
     this.authService.login(this.username, this.password).subscribe(data => {
       console.log(data);
-    }, error => console.log(error));
+    }, (error) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'login or password incorrect!',
+        });
+      }
+    );
   }
 }

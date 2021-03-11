@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthentificationService} from './services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private authService: AuthentificationService) {}
+
+  // verify if someone connected
+  isLogin() {
+    return this.authService.isLogin();
+  }
 }

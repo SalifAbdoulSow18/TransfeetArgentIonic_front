@@ -9,24 +9,60 @@
           <ion-label>Dépôt</ion-label>
         </div>
         <hr>
-
       </div>
-      <!--<div class="form ion-text-center">
-        <form>
-          <ion-item>
-            <ion-label>Username</ion-label>
-            <ion-input  required></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Password</ion-label>
-            <ion-input required></ion-input>
-          </ion-item>
-          <h6>Mot de passe oublié?</h6>
-          <ion-button type="submit" expand="block" shape="round">Se connecter</ion-button>
-        </form>
-      </div>-->
+      <div class="content-form-depot">
+        <div id="content-menu-choice" padding>
+          <div class="content-menu" (click)="ShowAndHide(1)">
+            Emmetteur
+            <div class="menu-bar-bottom" [hidden]="hide"></div>
+          </div>
+
+          <div class="content-menu" type="button" (click)="ShowAndHide(2)">
+            Bénéficiare
+            <div class="menu-bar-bottom" [hidden]="!hide"></div>
+          </div>
+        </div>
+        <div [hidden]="hide" id="content-form-emmeteur">
+          <form>
+            <ion-item>
+              <ion-label position="floating">Num CNI</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Nom Complet</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Telephone</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Montant</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Frais</ion-label>
+              <ion-input name="frais" id="frais"></ion-input>
+            </ion-item>
+          </form>
+        </div>
+
+        <div [hidden]="!hide" id="content-form-beneficiaire">
+          <form>
+            <ion-item>
+              <ion-label position="floating">Nom Complet</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" >Telephone</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </form>
+          <ion-button expand="block" shape="round">Valider</ion-button>
+        </div>
+      </div>
     </div>
-    <app-tabs></app-tabs>
   </ion-content>
 
 

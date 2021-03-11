@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./retrait.page.scss'],
 })
 export class RetraitPage implements OnInit {
-
+  hide = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  ShowAndHide(data: any)
+  {
+    // tslint:disable-next-line:triple-equals
+    this.hide = data != 1;
+  }
 }

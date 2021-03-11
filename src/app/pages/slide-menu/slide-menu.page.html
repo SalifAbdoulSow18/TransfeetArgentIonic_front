@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane when="sm" content-id="main-content" class="side">
-    <ion-menu content-id="main-content" color="primary">
+    <ion-menu content-id="main-content">
 
       <ion-content class="side">
         <ion-list>
@@ -28,10 +28,10 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-item (click)="deconnexion()" style="margin-top: 10%; --background: #51BFD0;">
-          <ion-label>Deconnexion</ion-label>
-          <ion-icon src="assets/icon/fleche.svg"></ion-icon>
-        </ion-item>
+          <ion-item (click)="deconnexion()" style="margin-top: 10%; --background: #51BFD0;">
+            <ion-icon src="assets/icon/exit.svg"></ion-icon>
+            <ion-label>Deconnexion</ion-label>
+          </ion-item>
       </ion-content>
     </ion-menu>
 
@@ -49,9 +49,10 @@
           <img class="avatar" src="assets/salif.jpeg" alt="">
         </ion-toolbar>
       </ion-header>
-      <ion-content>
+      <ion-content class="ion-padding">
         <app-header></app-header>
       </ion-content>
     </div>
+
   </ion-split-pane>
 </ion-app>

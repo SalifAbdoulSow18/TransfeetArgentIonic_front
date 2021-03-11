@@ -7,19 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { AgencePageRoutingModule } from './agence-routing.module';
 
 import { AgencePage } from './agence.page';
-import {TabsComponent} from './tabs/tabs.component';
 import {HeaderComponent} from './header/header.component';
+import {SlideMenuPageModule} from '../slide-menu/slide-menu.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgencePageRoutingModule
+    AgencePageRoutingModule,
   ],
   exports: [
-    TabsComponent
+    HeaderComponent
   ],
-  declarations: [AgencePage, TabsComponent, HeaderComponent]
+  declarations: [AgencePage, HeaderComponent]
 })
 export class AgencePageModule {}

@@ -11,22 +11,24 @@
       <hr>
 
     </div>
-    <!--<div class="form ion-text-center">
+    <div class="form ion-text-center">
       <form>
-        <ion-item>
-          <ion-label>Username</ion-label>
-          <ion-input  required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <ion-input required></ion-input>
-        </ion-item>
-        <h6>Mot de passe oublié?</h6>
-        <ion-button type="submit" expand="block" shape="round">Se connecter</ion-button>
+            <ion-item>
+              <ion-label>Type Transaction</ion-label>
+              <ion-select>
+                <ion-select-option>Dépôt</ion-select-option>
+                <ion-select-option>Retrait</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating" >Montant</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
       </form>
-    </div>-->
+          <ion-button expand="block" shape="round">Calculer</ion-button>
+    </div>
   </div>
-  <app-tabs></app-tabs>
 </ion-content>
 
 
