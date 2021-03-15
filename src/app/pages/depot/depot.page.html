@@ -11,6 +11,7 @@
         <hr>
       </div>
       <div class="content-form-depot">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div id="content-menu-choice" padding>
           <div class="content-menu" (click)="ShowAndHide(1)">
             Emmetteur
@@ -23,44 +24,59 @@
           </div>
         </div>
         <div [hidden]="hide" id="content-form-emmeteur">
-          <form>
+
             <ion-item>
               <ion-label position="floating">Num CNI</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="cni"
+                         formControlName="cni"
+                         [ngClass]="{'is-invalid': submitted && f.cni.errors }" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Nom Complet</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="nomComplet1"
+                         formControlName="nomComplet1"
+                         [ngClass]="{'is-invalid': submitted && f.nomComplet1.errors }" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Telephone</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="telephone1"
+                         formControlName="telephone1"
+                         [ngClass]="{'is-invalid': submitted && f.telephone1.errors }" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Montant</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="montant"
+                         formControlName="montant"
+                         [ngClass]="{'is-invalid': submitted && f.montant.errors }" required></ion-input>
             </ion-item>
-            <ion-item>
+            <ion-item class="frais">
               <ion-label position="floating">Frais</ion-label>
               <ion-input name="frais" id="frais"></ion-input>
             </ion-item>
-          </form>
+            <ion-item style="width: 100%">
+              <ion-label position="floating">Total</ion-label>
+              <ion-input name="total"></ion-input>
+            </ion-item>
+
         </div>
 
         <div [hidden]="!hide" id="content-form-beneficiaire">
-          <form>
             <ion-item>
               <ion-label position="floating">Nom Complet</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="nomComplet2"
+                         formControlName="nomComplet2"
+                         [ngClass]="{'is-invalid': submitted && f.nomComplet2.errors }" required></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="floating" >Telephone</ion-label>
-              <ion-input></ion-input>
+              <ion-input [(ngModel)]="telephone2"
+                         formControlName="telephone2"
+                         [ngClass]="{'is-invalid': submitted && f.telephone2.errors }" required></ion-input>
             </ion-item>
-          </form>
-          <ion-button expand="block" shape="round">Valider</ion-button>
+          <ion-button type="submit" expand="block" shape="round">Valider</ion-button>
         </div>
+        </form>
       </div>
     </div>
   </ion-content>

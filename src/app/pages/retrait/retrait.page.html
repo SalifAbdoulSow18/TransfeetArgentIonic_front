@@ -11,9 +11,11 @@
       <hr>
     </div>
     <div class="content-form-depot">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label position="floating">Code Transaction</ion-label>
-        <ion-input placeholder="DF6H76"></ion-input>
+        <ion-input name="code" [(ngModel)]="code" (change)="InfoDepot($event)" formControlName="code"
+                   [ngClass]="{'is-invalid': submitted && f.code.errors }" required></ion-input>
       </ion-item>
       <div id="content-menu-choice" padding>
         <div class="content-menu" (click)="ShowAndHide(1)">
@@ -27,58 +29,55 @@
         </div>
       </div>
       <div [hidden]="hide" id="content-form-emmeteur">
-        <form>
-          <ion-item style="margin: 3%">
+
+          <ion-item>
             <ion-label position="floating">Telephone</ion-label>
-            <ion-input></ion-input>
+            <ion-input [(ngModel)]="telephone"
+                       formControlName="telephone"
+                       [ngClass]="{'is-invalid': submitted && f.telephone.errors }" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label>Nom Complet</ion-label>
-            <ion-input placeholder="Salif A. SOW"></ion-input>
+            <ion-label>Nom Complet: </ion-label>
+            <ion-input placeholder="{{nomComplet1}}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Telephone</ion-label>
-            <ion-input placeholder="784203878"></ion-input>
+            <ion-label>Telephone: </ion-label>
+            <ion-input placeholder="{{phone1}}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Montant</ion-label>
-            <ion-input placeholder="300000"></ion-input>
+            <ion-label>Montant Retiré: </ion-label>
+            <ion-input placeholder="{{montantRetrait}}fcfa"></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-label>Date Envoie</ion-label>
-            <ion-input placeholder="21-08-20"></ion-input>
-          </ion-item>
-        </form>
       </div>
 
       <div [hidden]="!hide" id="content-form-beneficiaire">
-        <form>
           <ion-item>
-            <ion-label>CNI</ion-label>
-            <ion-input placeholder="FFG434232665NG43434"></ion-input>
+            <ion-label>N°CNI: </ion-label>
+            <ion-input placeholder="{{cni}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label>Nom Complet</ion-label>
-            <ion-input placeholder="Seydou O. TALL"></ion-input>
+            <ion-label>Nom Complet: </ion-label>
+            <ion-input placeholder="{{nomComplet2}}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Telephone</ion-label>
-            <ion-input placeholder="784343878"></ion-input>
+            <ion-label>Telephone: </ion-label>
+            <ion-input placeholder="{{phone2}}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Montant</ion-label>
-            <ion-input placeholder="300000"></ion-input>
+            <ion-label>Montant Envoyé: </ion-label>
+            <ion-input placeholder="{{montantEnvoi}}fcfa"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Date Envoie</ion-label>
-            <ion-input placeholder="21-08-20"></ion-input>
+            <ion-label>Date Envoie: </ion-label>
+            <ion-datetime displayFormat="DDDD MMM D, YYYY" placeholder="{{date}}"></ion-datetime>
           </ion-item>
-        </form>
+
 
       </div>
-      <ion-button expand="block" shape="round">Retirer</ion-button>
+      <ion-button type="submit" expand="block" shape="round">Retirer</ion-button>
+      </form>
     </div>
   </div>
 </ion-content>

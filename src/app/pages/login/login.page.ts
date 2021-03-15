@@ -30,8 +30,9 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.authService.loadingConnex();
     this.authService.login(this.username, this.password).subscribe(data => {
-      console.log(data);
+      // console.log(data);
     }, (error) => {
         Swal.fire({
           position: 'top-end',

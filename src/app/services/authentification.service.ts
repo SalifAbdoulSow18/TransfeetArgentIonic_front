@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import Swal from 'sweetalert2';
+import {LoadingController} from '@ionic/angular';
 
 
 @Injectable({
@@ -12,13 +13,14 @@ import Swal from 'sweetalert2';
 })
 export class AuthentificationService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private loadingctrl: LoadingController) { }
   // tslint:disable-next-line:new-parens
   helpers = new JwtHelperService;
   baseUrl = environment.api_url;
+  private loading;
 
   login(username: string, password: string) {
-    console.log(this.baseUrl);
+    // console.log(this.baseUrl);
     return this.http.post(this.baseUrl + '/login', {
       username, password
     })
@@ -59,6 +61,14 @@ export class AuthentificationService {
       ) ;
   }
 
+  loadingConnex() {
+    this.loadingctrl.create({
+      message: 'Connexion...'
+    }).then((overlay) => { this.loading = overlay;
+                           this.loading.present();
+                           setTimeout(() =>{this.loading.dismiss();}, 200);
+    });
+  }
   // verifier la connexion
   isLogin() {
     if (localStorage.getItem('token')) {
