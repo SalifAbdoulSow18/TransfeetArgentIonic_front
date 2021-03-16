@@ -17,6 +17,8 @@ export class DepotPage implements OnInit {
   telephone1 = '';
   telephone2 = '';
   montant = '';
+  total: any;
+  frais: any;
   donne: any;
   myForm: any = FormGroup ;
   submitted = false;
@@ -34,6 +36,22 @@ export class DepotPage implements OnInit {
       telephone1: ['', [ Validators.required]],
       telephone2: ['', [ Validators.required]],
       montant: ['', [ Validators.required]],
+    });
+  }
+
+  // remplissage par defaut des champs frais et total
+  InfoDepot($event: Event) {
+    const auto = {
+      montant: this.montant
+    };
+    this.transactionService.calculFrais(auto).subscribe( reponse => {
+     // @ts-ignore
+      if (this.montant !== '' && this.montant >= 1000 ) {
+       this.frais = reponse;
+       this.total = +this.montant - (+this.frais);
+     } else {
+       this.total = 0; this.frais = 0;
+      }
     });
   }
 
