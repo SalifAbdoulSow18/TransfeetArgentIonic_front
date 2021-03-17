@@ -18,7 +18,7 @@
             <div class="menu-bar-bottom" [hidden]="hide"></div>
           </div>
 
-          <div class="content-menu" type="button" (click)="ShowAndHide(2)">
+          <div class="content-menu" (click)="ShowAndHide(2)">
             Bénéficiare
             <div class="menu-bar-bottom" [hidden]="!hide"></div>
           </div>
@@ -31,27 +31,39 @@
                          formControlName="cni"
                          [ngClass]="{'is-invalid': submitted && f.cni.errors }" required></ion-input>
             </ion-item>
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.cni.errors">
+              <div *ngIf="f.cni.errors.required">CNI is required!</div>
+            </div>
             <ion-item>
               <ion-label position="floating">Nom Complet</ion-label>
               <ion-input [(ngModel)]="nomComplet1"
                          formControlName="nomComplet1"
                          [ngClass]="{'is-invalid': submitted && f.nomComplet1.errors }" required></ion-input>
             </ion-item>
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.nomComplet1.errors">
+              <div *ngIf="f.nomComplet1.errors.required">Nom Complet is required!</div>
+            </div>
             <ion-item>
               <ion-label position="floating">Telephone</ion-label>
               <ion-input [(ngModel)]="telephone1"
                          formControlName="telephone1"
                          [ngClass]="{'is-invalid': submitted && f.telephone1.errors }" required></ion-input>
             </ion-item>
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.telephone1.errors">
+              <div *ngIf="f.telephone1.errors.required">Telephone is required!</div>
+            </div>
             <ion-item>
               <ion-label position="floating">Montant</ion-label>
               <ion-input (keyup)="InfoDepot($event)" [(ngModel)]="montant"
                          formControlName="montant"
                          [ngClass]="{'is-invalid': submitted && f.montant.errors }" required></ion-input>
             </ion-item>
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.montant.errors">
+              <div *ngIf="f.montant.errors.required">Montant is required!</div>
+            </div>
             <ion-item class="frais">
               <ion-label position="floating">Frais</ion-label>
-              <ion-input name="frais" id="frais" value="{{frais}}"></ion-input>
+              <ion-input name="frais" value="{{frais}}"></ion-input>
             </ion-item>
             <ion-item style="width: 100%">
               <ion-label position="floating">Total</ion-label>
@@ -67,13 +79,18 @@
                          formControlName="nomComplet2"
                          [ngClass]="{'is-invalid': submitted && f.nomComplet2.errors }" required></ion-input>
             </ion-item>
-
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.nomComplet2.errors">
+              <div *ngIf="f.nomComplet2.errors.required">Nom Complet is required!</div>
+            </div>
             <ion-item>
               <ion-label position="floating" >Telephone</ion-label>
               <ion-input [(ngModel)]="telephone2"
                          formControlName="telephone2"
                          [ngClass]="{'is-invalid': submitted && f.telephone2.errors }" required></ion-input>
             </ion-item>
+            <div class="ion-text-center" style="color: red" *ngIf="submitted && f.telephone2.errors">
+              <div *ngIf="f.telephone2.errors.required">Telephone is required!</div>
+            </div>
           <ion-button type="submit" expand="block" shape="round">Valider</ion-button>
         </div>
         </form>

@@ -29,6 +29,9 @@ export class CalculatorPage implements OnInit {
       });
 
       await alert.present();
+      {
+        calculatrice.reset();
+      }
     });
   }
 }

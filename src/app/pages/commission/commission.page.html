@@ -11,20 +11,34 @@
       <hr>
 
     </div>
-    <!--<div class="form ion-text-center">
-      <form>
-        <ion-item>
-          <ion-label>Username</ion-label>
-          <ion-input  required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Password</ion-label>
-          <ion-input required></ion-input>
-        </ion-item>
-        <h6>Mot de passe oublié?</h6>
-        <ion-button type="submit" expand="block" shape="round">Se connecter</ion-button>
-      </form>
-    </div>-->
+    <ion-grid class="ion-text-center">
+      <ion-row class="header-row">
+        <ion-col>
+          <ion-text>Data</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Type</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Montant</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let infoTransaction of infoTransactions">
+        <ion-col>
+          <ion-datetime displayFormat="MMM D, YYYY" value="{{infoTransaction.dateDepot}}"></ion-datetime>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            Depot
+          </ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoTransaction.fraisEnvoi}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
 

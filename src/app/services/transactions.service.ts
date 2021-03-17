@@ -24,4 +24,7 @@ export class TransactionsService {
   transactionRetrait(retrait: any): Observable<any> {
     return this.httpClient.post(`${ this.baseUrl }/transactions/retrait`, retrait) ;
   }
+  myTransaction(): Observable<any> {
+    return this.httpClient.get(`${ this.baseUrl }/transactions?status=0`) ;
+  }
 }

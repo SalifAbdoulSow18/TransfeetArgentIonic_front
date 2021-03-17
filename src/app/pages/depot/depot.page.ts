@@ -106,7 +106,7 @@ export class DepotPage implements OnInit {
           handler: () => {
             this.transactionService.transactionDepot(myDepot).subscribe(async reponse => {
               this.donne = reponse.data;
-              console.log(this.donne);
+              // console.log(this.donne);
               const conf = await this.alertController.create({
                 cssClass: 'my-custom-class',
                 header: 'Transfert réussi',
@@ -117,6 +117,9 @@ export class DepotPage implements OnInit {
               });
 
               await conf.present();
+              {
+                this.myForm.reset();
+              }
               }, async (error) => {
               const erreur = await this.alertController.create({
                 cssClass: 'my-custom-class',

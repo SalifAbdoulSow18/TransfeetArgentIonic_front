@@ -107,6 +107,9 @@ export class RetraitPage implements OnInit {
               });
 
               await conf.present();
+              {
+                this.myForm.reset();
+              }
             }, async (error) => {
                 const erreur = await this.alertController.create({
                   cssClass: 'my-custom-class',
