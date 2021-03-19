@@ -18,6 +18,7 @@ export class DepotPage implements OnInit {
   telephone2 = '';
   montant = '';
   total: any;
+  ts: any;
   frais: any;
   donne: any;
   myForm: any = FormGroup ;
@@ -49,8 +50,9 @@ export class DepotPage implements OnInit {
       if (this.montant !== '' && this.montant >= 1000 ) {
        this.frais = reponse;
        this.total = +this.montant - (+this.frais);
+       this.ts = +this.montant + (+this.frais);
      } else {
-       this.total = 0; this.frais = 0;
+       this.total = 0; this.frais = 0; this.ts = 0;
       }
     });
   }

@@ -27,4 +27,8 @@ export class TransactionsService {
   myTransaction(id: number){
     return this.httpClient.get(`${ this.baseUrl }/users/transaction/` + id) ;
   }
+
+  montantCompte(){
+    return this.httpClient.get(`${ this.baseUrl }/montantCompte`) ;
+  }
 }

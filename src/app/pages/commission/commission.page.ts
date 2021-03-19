@@ -15,7 +15,7 @@ export class CommissionPage implements OnInit {
     this.myUser = (localStorage.getItem('id'));
     this.transaction.myTransaction(this.myUser).subscribe(data => {
       this.infoTransactions = data ;
-      console.log(this.infoTransactions);
+      // console.log(this.infoTransactions);
     }) ;
   }
 

@@ -48,6 +48,10 @@ export class ListSiegeService {
     return this.httpClient.get(`${ this.baseUrl }/depots`) ;
   }
 
+  annulerDepot(code): Observable<any> {
+    return this.httpClient.delete(`${ this.baseUrl }/transaction/annuler`, code) ;
+  }
+
   annulerRecharge(): Observable<any> {
     return this.httpClient.delete(`${ this.baseUrl }/rechargeComptes/annuler`).pipe(
       tap(() => {

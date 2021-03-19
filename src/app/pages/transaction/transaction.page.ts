@@ -15,7 +15,7 @@ infoTransactions: any;
               private router: Router) {
     this.myUser = (localStorage.getItem('id'));
     this.transaction.myTransaction(this.myUser).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.infoTransactions = data ;
     }) ;
   }

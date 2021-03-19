@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../../../services/authentification.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {TransactionsService} from '../../../services/transactions.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  montant: any;
   myData: boolean;
-  constructor(private authService: AuthentificationService, private router: Router) {
+  constructor(private authService: AuthentificationService, private router: Router, private transaction: TransactionsService) {
+
+    this.transaction.montantCompte().subscribe( data => {
+      this.montant = data;
+    });
     // Pour l'affichage des commissions et toutes les transactions
     if (localStorage.getItem('role') === 'ROLE_AdminAgence') {
       this.myData = true;

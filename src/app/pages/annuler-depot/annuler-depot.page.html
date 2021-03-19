@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>annuler-depot</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center commission">
+        <ion-icon src="assets/icon/delete.svg"></ion-icon>
+        <ion-label>Annuler Dépôt</ion-label>
+      </div>
+      <hr>
+    </div>
+    <form #annulation="ngForm" (ngSubmit)="presentAlert(annulation)">
+      <ion-item>
+        <ion-label position="floating" >Code Transaction</ion-label>
+        <ion-input ngModel name="code" required></ion-input>
+      </ion-item>
+      <ion-button type="submit" expand="block" shape="round">Annuler</ion-button>
+    </form>
+  </div>
 </ion-content>
