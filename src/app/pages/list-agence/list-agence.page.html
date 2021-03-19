@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center commission">
+        <ion-icon src="assets/icon/listAgence.svg"></ion-icon>
+        <ion-label>Les Agences</ion-label>
+      </div>
+      <hr>
+    </div>
+    <ion-grid>
+      <ion-row class="ion-text-center header-row">
+        <ion-col>
+          <ion-text>Nom Agence</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Action</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let infocompte of infoComptes">
+        <ion-col>
+          <ion-text>
+            {{infocompte.agence.nomAgence}}
+          </ion-text>
+        </ion-col>
+        <ion-button color="danger">Bloquer</ion-button>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

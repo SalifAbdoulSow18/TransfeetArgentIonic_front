@@ -6,13 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.page.scss'],
 })
 export class FooterPage implements OnInit {
-  myData: boolean;
+  myAdminAgence: boolean;
+  myUserAgence: boolean;
+  myAdminSystem: boolean;
+  myCaissier: boolean;
   constructor() {
-    // Pour l'affichage des commissions
+    // Pour l'affichage des tabs
     if (localStorage.getItem('role') === 'ROLE_AdminAgence') {
-      this.myData = true;
-    } else  {
-      this.myData = false;
+      this.myAdminAgence = true;
+    }
+    if (localStorage.getItem('role') === 'ROLE_UserAgence') {
+      this.myUserAgence = true;
+    }
+    if (localStorage.getItem('role') === 'ROLE_AdminSystem') {
+      this.myAdminSystem = true;
+    }
+    if (localStorage.getItem('role') === 'ROLE_Caissier') {
+      this.myCaissier = true;
     }
   }
 

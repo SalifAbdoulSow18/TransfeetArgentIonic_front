@@ -1,0 +1,44 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center commission">
+        <ion-icon src="assets/icon/listUser.svg"></ion-icon>
+        <ion-label>Les Utilisateurs</ion-label>
+      </div>
+      <hr>
+    </div>
+    <ion-grid class="ion-text-center">
+      <ion-row class="header-row">
+        <ion-col>
+          <ion-text>Nom Complet</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Telephone</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>Role</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let infoUser of infoUsers">
+        <ion-col>
+          <ion-text>
+            {{infoUser.nom}} {{infoUser.nom}}
+          </ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoUser.phone}}
+          </ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoUser.profil.libelle}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

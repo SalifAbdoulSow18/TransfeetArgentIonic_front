@@ -47,6 +47,46 @@ const routes: Routes = [
     path: 'slide-menu',
     loadChildren: () => import('./pages/slide-menu/slide-menu.module').then( m => m.SlideMenuPageModule)
   },
+  {
+    path: 'entreprise',
+    loadChildren: () => import('./pages/entreprise/entreprise.module').then( m => m.EntreprisePageModule)
+  },
+  {
+    path: 'tarif',
+    loadChildren: () => import('./pages/tarif/tarif.module').then( m => m.TarifPageModule)
+  },
+  {
+    path: 'part',
+    loadChildren: () => import('./pages/part/part.module').then( m => m.PartPageModule)
+  },
+  {
+    path: 'list-user',
+    loadChildren: () => import('./pages/list-user/list-user.module').then( m => m.ListUserPageModule)
+  },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./pages/add-user/add-user.module').then( m => m.AddUserPageModule)
+  },
+  {
+    path: 'list-agence',
+    loadChildren: () => import('./pages/list-agence/list-agence.module').then( m => m.ListAgencePageModule)
+  },
+  {
+    path: 'add-agence',
+    loadChildren: () => import('./pages/add-agence/add-agence.module').then( m => m.AddAgencePageModule)
+  },
+  {
+    path: 'recharge',
+    loadChildren: () => import('./pages/recharge/recharge.module').then( m => m.RechargePageModule)
+  },
+  {
+    path: 'delete-recharge',
+    loadChildren: () => import('./pages/delete-recharge/delete-recharge.module').then( m => m.DeleteRechargePageModule)
+  },
+  {
+    path: 'annuler-depot',
+    loadChildren: () => import('./pages/annuler-depot/annuler-depot.module').then( m => m.AnnulerDepotPageModule)
+  },
 ];
 
 @NgModule({

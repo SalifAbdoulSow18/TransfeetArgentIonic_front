@@ -1,0 +1,59 @@
+<ion-item routerLink="/add-agence" *ngIf="myData">
+  <ion-icon src="assets/icon/addAgence.svg"></ion-icon>
+  <ion-label>Ajout Agence</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/list-agence">
+  <ion-icon src="assets/icon/listAgence.svg"></ion-icon>
+  <ion-label>Liste Agences</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/recharge">
+  <ion-icon src="assets/icon/recharge.svg"></ion-icon>
+  <ion-label>Dépôt</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/delete-recharge">
+  <ion-icon src="assets/icon/delete.svg"></ion-icon>
+  <ion-label>Annuler Dépôt</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/add-user" *ngIf="myData">
+  <ion-icon src="assets/icon/addUser.svg"></ion-icon>
+  <ion-label>Ajout Utilisateur</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/list-user" *ngIf="myData">
+  <ion-icon src="assets/icon/listUser.svg"></ion-icon>
+  <ion-label>Liste Utilisateur</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/tarif" *ngIf="myData">
+  <ion-icon src="assets/icon/tarif.svg"></ion-icon>
+  <ion-label>Tous les Tarifs</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/part" *ngIf="myData">
+  <ion-icon src="assets/icon/commis.svg"></ion-icon>
+  <ion-label>Les Parts</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item routerLink="/calculator">
+  <ion-icon src="assets/icon/calculator.svg"></ion-icon>
+  <ion-label>Calculateur de frais</ion-label>
+  <ion-icon src="assets/icon/superieur.svg"></ion-icon>
+</ion-item>
+
+<ion-item (click)="deconnexion()" button>
+  <ion-icon src="assets/icon/exit.svg"></ion-icon>
+  <ion-label>Déconnexion</ion-label>
+</ion-item>
+

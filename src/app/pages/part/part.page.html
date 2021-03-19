@@ -1,0 +1,72 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center commission">
+        <ion-icon src="assets/icon/commis.svg"></ion-icon>
+        <ion-label>Les Parts</ion-label>
+      </div>
+      <hr>
+    </div>
+    <ion-grid class="ion-text-center" style="margin-top: 10%">
+
+      <ion-row>
+        <ion-col class="header-row">
+          <ion-text>Part Etat</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoPart.commissionEtat}}%
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="header-row">
+          <ion-text>Part Système</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoPart.commissionSystem}}%
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="header-row">
+          <ion-text>Part Envoie</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoPart.commissionEnvoie}}%
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="header-row">
+          <ion-text>Part Retrait</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoPart.commissionRetrait}}%
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="header-row">
+          <ion-text>Part Agence</ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text>
+            {{infoPart.commissionAgence}}%
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+</ion-content>

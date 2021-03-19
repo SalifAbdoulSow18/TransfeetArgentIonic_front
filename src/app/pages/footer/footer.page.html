@@ -1,4 +1,4 @@
-<ion-tabs>
+<ion-tabs *ngIf="myUserAgence || myAdminAgence">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="agence">
       <ion-icon src="assets/icon/home.svg"></ion-icon>
@@ -8,7 +8,31 @@
       <ion-icon src="assets/icon/information.svg"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf="myData" tab="commission">
+    <ion-tab-button *ngIf="myAdminAgence" tab="commission">
+      <ion-icon src="assets/icon/commis.svg"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="calculator">
+      <ion-icon src="assets/icon/calculator.svg"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+<ion-tabs *ngIf="myAdminSystem || myCaissier">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="entreprise">
+      <ion-icon src="assets/icon/home.svg"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="myAdminSystem" tab="tarif">
+      <ion-icon src="assets/icon/tarif.svg"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="delete-recharge">
+      <ion-icon src="assets/icon/delete.svg"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="myAdminSystem" tab="part">
       <ion-icon src="assets/icon/commis.svg"></ion-icon>
     </ion-tab-button>
 

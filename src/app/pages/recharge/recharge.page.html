@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center calculator">
+        <ion-icon src="assets/icon/recharge.svg"></ion-icon>
+        <ion-label>Dépôt</ion-label>
+      </div>
+      <hr>
+
+    </div>
+    <div class="form ion-text-center">
+      <ion-item>
+        <ion-label position="floating">Nom Agence</ion-label>
+        <ion-input name="nomAgence" [(ngModel)]="nomAgence" (keyup)="InfoDepot($event)" required></ion-input>
+      </ion-item>
+      <form #depot="ngForm" (ngSubmit)="presentAlert(depot)">
+        <ion-item>
+          <ion-label position="floating" >Montant</ion-label>
+          <ion-input ngModel name="montant" required></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="block" shape="round">Envoyer</ion-button>
+      </form>
+
+    </div>
+  </div>
+</ion-content>
+
+
