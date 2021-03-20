@@ -25,7 +25,12 @@ export class TransactionsService {
     return this.httpClient.post(`${ this.baseUrl }/transactions/retrait`, retrait) ;
   }
   myTransaction(id: number){
-    return this.httpClient.get(`${ this.baseUrl }/users/transaction/` + id) ;
+    // @ts-ignore
+    return this.httpClient.get(`${ this.baseUrl }/users/transaction/` + id ) ;
+  }
+
+  AllTransaction(){
+    return this.httpClient.get(`${ this.baseUrl }/transactions`) ;
   }
 
   montantCompte(){

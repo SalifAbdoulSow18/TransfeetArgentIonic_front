@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'annuler-depot',
     loadChildren: () => import('./pages/annuler-depot/annuler-depot.module').then( m => m.AnnulerDepotPageModule)
   },
+  {
+    path: 'all-transaction',
+    loadChildren: () => import('./pages/all-transaction/all-transaction.module').then( m => m.AllTransactionPageModule)
+  },
 ];
 
 @NgModule({

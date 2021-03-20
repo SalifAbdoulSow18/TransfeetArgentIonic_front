@@ -1,0 +1,47 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center transaction">
+        <ion-icon src="assets/icon/all-transaction.svg"></ion-icon>
+        <ion-label>Transaction</ion-label>
+      </div>
+      <hr>
+    </div>
+
+    <div>
+      <ion-grid class="ion-text-center">
+        <ion-row class="header-row">
+          <ion-col>
+            <ion-text>Data</ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-text>Type</ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-text>Montant</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let infoTransaction of infoTransactions">
+          <ion-col>
+            <ion-datetime displayFormat="MMM D, YYYY" value="{{infoTransaction.dateDepot}}"></ion-datetime>
+          </ion-col>
+          <ion-col>
+            <ion-text>
+              Depot
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-text>
+              {{infoTransaction.montant}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
+
+

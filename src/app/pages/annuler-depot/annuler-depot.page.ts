@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ListSiegeService} from '../../services/list-siege.service';
 import {AlertController} from '@ionic/angular';
-import {TransactionsService} from '../../services/transactions.service';
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -19,21 +18,21 @@ export class AnnulerDepotPage implements OnInit {
     const myCode = {
       codeTransaction: annulation.value.code
     };
-    // console.log(myCode);
+    console.log(myCode);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Confirmation',
       message: `Voulez vous vraiment annuler le depot?`,
       buttons: [
         {
-          text: 'annuler',
+          text: 'non',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Confirmer',
+          text: 'oui',
           handler: () => {
             this.listDepot.annulerDepot(myCode).subscribe(async data => {
               console.log(data);
@@ -45,6 +44,9 @@ export class AnnulerDepotPage implements OnInit {
               });
 
               await info.present();
+              {
+                annulation.reset();
+              }
             });
             // console.log('Confirm Okay');
           }

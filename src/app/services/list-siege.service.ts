@@ -49,7 +49,7 @@ export class ListSiegeService {
   }
 
   annulerDepot(code): Observable<any> {
-    return this.httpClient.delete(`${ this.baseUrl }/transaction/annuler`, code) ;
+    return this.httpClient.post(`${ this.baseUrl }/transaction/annuler`, code) ;
   }
 
   annulerRecharge(): Observable<any> {

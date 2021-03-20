@@ -41,7 +41,7 @@ export class AuthentificationService {
             if (localStorage.getItem('role') === 'ROLE_AdminAgence' || localStorage.getItem('role') === 'ROLE_UserAgence') {
               this.router.navigate(['/agence']);
             }
-            if (localStorage.getItem('role') === 'ROLE_AdminSystem' || localStorage.getItem('role') === 'ROLE_Caissier') {
+            else if (localStorage.getItem('role') === 'ROLE_AdminSystem' || localStorage.getItem('role') === 'ROLE_Caissier') {
               this.router.navigate(['/entreprise']);
             }else {
               Swal.fire({
