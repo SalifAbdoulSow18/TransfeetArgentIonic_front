@@ -8,16 +8,30 @@ import {Router} from '@angular/router';
   styleUrls: ['./commission.page.scss'],
 })
 export class CommissionPage implements OnInit {
+  total: any;
   infoTransactions: any;
   constructor(private transaction: TransactionsService,
               private router: Router) {
     this.transaction.AllTransaction().subscribe(data => {
       this.infoTransactions = data ;
-      // console.log(this.infoTransactions);
+      this.total = 0;
+      for (const tran of this.infoTransactions) {
+        this.total += tran.fraisEnvoi;
+      }
+      // console.log(this.total);
     }) ;
   }
 
   ngOnInit() {
+    // refresh table
+    this.transaction.refresNeeded$.subscribe(() => {
+      this.transaction.AllTransaction().subscribe( data => {
+        this.infoTransactions = data;
+      });
+    });
+    this.transaction.AllTransaction().subscribe( data => {
+      this.infoTransactions = data;
+    });
   }
 
 }

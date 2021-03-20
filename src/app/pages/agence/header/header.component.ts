@@ -25,7 +25,17 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // refresh table
+    this.transaction.refresNeeded$.subscribe(() => {
+      this.transaction.montantCompte().subscribe( data => {
+        this.montant = data;
+      });
+    });
+    this.transaction.montantCompte().subscribe( data => {
+      this.montant = data;
+    });
+  }
   deconnexion() {
     Swal.fire({
       title: 'Are you sure to disconnect?',

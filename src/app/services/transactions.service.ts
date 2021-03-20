@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsService {
   baseUrl = environment.api_url ;
+
+  // tslint:disable-next-line:variable-name
+  private _refresNeeded$ = new Subject<void>() ;
+
+  get refresNeeded$(): any {
+    return this._refresNeeded$ ;
+  }
   constructor(private httpClient: HttpClient) { }
 
   calculFrais(montant): Observable<any> {
@@ -15,14 +23,22 @@ export class TransactionsService {
   }
 
   transactionDepot(depot: any): Observable<any> {
-    return this.httpClient.post(`${ this.baseUrl }/transactions/depot`, depot) ;
+    return this.httpClient.post(`${ this.baseUrl }/transactions/depot`, depot).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    ) ;
   }
 
   infoDepot(info: any): Observable<any> {
     return this.httpClient.post(`${ this.baseUrl }/transactions/info`, info) ;
   }
   transactionRetrait(retrait: any): Observable<any> {
-    return this.httpClient.post(`${ this.baseUrl }/transactions/retrait`, retrait) ;
+    return this.httpClient.post(`${ this.baseUrl }/transactions/retrait`, retrait).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    ) ;
   }
   myTransaction(id: number){
     // @ts-ignore
@@ -34,6 +50,6 @@ export class TransactionsService {
   }
 
   montantCompte(){
-    return this.httpClient.get(`${ this.baseUrl }/montantCompte`) ;
+    return this.httpClient.get(`${ this.baseUrl }/montantCompte`);
   }
 }

@@ -60,7 +60,11 @@ export class ListSiegeService {
   }
 
   annulerDepot(code): Observable<any> {
-    return this.httpClient.post(`${ this.baseUrl }/transaction/annuler`, code) ;
+    return this.httpClient.post(`${ this.baseUrl }/transaction/annuler`, code).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    ) ;
   }
 
   annulerRecharge(): Observable<any> {

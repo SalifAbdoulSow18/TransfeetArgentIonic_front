@@ -9,15 +9,28 @@ import {Router} from '@angular/router';
 })
 export class AllTransactionPage implements OnInit {
   infoTransactions: any;
-  constructor(private transaction: TransactionsService,
-              private router: Router) {
+  total: any;
+  constructor(private transaction: TransactionsService) {
     this.transaction.AllTransaction().subscribe(data => {
       // console.log(data);
       this.infoTransactions = data ;
+      this.total = 0;
+      for (const tran of this.infoTransactions) {
+        this.total += tran.montant;
+      }
     }) ;
   }
 
   ngOnInit() {
+    // refresh table
+    this.transaction.refresNeeded$.subscribe(() => {
+      this.transaction.AllTransaction().subscribe( data => {
+        this.infoTransactions = data;
+      });
+    });
+    this.transaction.AllTransaction().subscribe( data => {
+      this.infoTransactions = data;
+    });
   }
 
 }

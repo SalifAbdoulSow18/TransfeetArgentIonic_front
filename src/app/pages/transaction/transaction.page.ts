@@ -10,6 +10,7 @@ import {log} from 'util';
 })
 export class TransactionPage implements OnInit {
   myUser: any;
+  total: any;
 infoTransactions: any;
   constructor(private transaction: TransactionsService,
               private router: Router) {
@@ -17,10 +18,24 @@ infoTransactions: any;
     this.transaction.myTransaction(this.myUser).subscribe(data => {
       // console.log(data);
       this.infoTransactions = data ;
+      this.total = 0;
+      for (const tran of this.infoTransactions) {
+        this.total += tran.montant;
+      }
+      // console.log(this.total);
     }) ;
   }
 
   ngOnInit() {
+    // refresh table
+    this.transaction.refresNeeded$.subscribe(() => {
+      this.transaction.myTransaction(this.myUser).subscribe( data => {
+        this.infoTransactions = data;
+      });
+    });
+    this.transaction.myTransaction(this.myUser).subscribe( data => {
+      this.infoTransactions = data;
+    });
   }
 
 }
