@@ -43,11 +43,14 @@
                        formControlName="username"
                        [ngClass]="{'is-invalid': submitted && f.username.errors }" required></ion-input>
           </ion-item>
-          <ion-item class="frais">
+        <ion-item>
             <ion-label position="floating">Profil</ion-label>
-            <ion-input [(ngModel)]="profil"
-                       formControlName="profil"
-                       [ngClass]="{'is-invalid': submitted && f.profil.errors }" required></ion-input>
+            <ion-select [(ngModel)]="profil"
+                        (ngModelChange)="optionChoised($event)"
+                        formControlName="profil"
+                        [ngClass]="{'is-invalid': submitted && f.profil.errors }" required>
+              <ion-select-option *ngFor="let profils of myProfil" value="{{profils.id}}">{{profils.libelle}}</ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Mot de passe</ion-label>
@@ -63,7 +66,7 @@
                        formControlName="address"
                        [ngClass]="{'is-invalid': submitted && f.address.errors }" required></ion-input>
           </ion-item>
-          <ion-button type="submit" expand="block" shape="round">Valider</ion-button>
+          <ion-button type="submit" [disabled]="!this.myForm.valid" expand="block" shape="round">Valider</ion-button>
       </form>
     </div>
 

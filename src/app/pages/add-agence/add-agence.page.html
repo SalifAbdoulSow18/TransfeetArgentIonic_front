@@ -1,9 +1,116 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>add-agence</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center depot">
+        <ion-icon src="assets/icon/addAgence.svg"></ion-icon>
+        <ion-label>Ajout Agence</ion-label>
+      </div>
+      <hr>
+    </div>
+    <div class="content-form-depot">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div id="content-menu-choice" padding>
+          <div class="content-menu" (click)="ShowAndHide(1)">
+            Emmetteur
+            <div class="menu-bar-bottom" [hidden]="hide"></div>
+          </div>
 
+          <div class="content-menu" (click)="ShowAndHide(2)">
+            Bénéficiare
+            <div class="menu-bar-bottom" [hidden]="!hide"></div>
+          </div>
+        </div>
+        <div [hidden]="hide" id="content-form-emmeteur">
+
+          <ion-item>
+            <ion-label position="floating">Montant Compte</ion-label>
+            <ion-input [(ngModel)]="montant"
+                       formControlName="montant"
+                       [ngClass]="{'is-invalid': submitted && f.montant.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nom Agence</ion-label>
+            <ion-input [(ngModel)]="nomAgence"
+                       formControlName="nomAgence"
+                       [ngClass]="{'is-invalid': submitted && f.nomAgence.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Latittude</ion-label>
+            <ion-input [(ngModel)]="latittude"
+                       formControlName="latittude"
+                       [ngClass]="{'is-invalid': submitted && f.latittude.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Longitude</ion-label>
+            <ion-input [(ngModel)]="longitude"
+                       formControlName="longitude"
+                       [ngClass]="{'is-invalid': submitted && f.longitude.errors }" required></ion-input>
+          </ion-item>
+
+        </div>
+
+        <div [hidden]="!hide" id="content-form-beneficiaire">
+          <ion-item>
+            <ion-label position="floating">Num CNI</ion-label>
+            <ion-input [(ngModel)]="cni"
+                       formControlName="cni"
+                       [ngClass]="{'is-invalid': submitted && f.cni.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nom</ion-label>
+            <ion-input [(ngModel)]="nom"
+                       formControlName="nom"
+                       [ngClass]="{'is-invalid': submitted && f.nom.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" >Prenom</ion-label>
+            <ion-input [(ngModel)]="prenom"
+                       formControlName="prenom"
+                       [ngClass]="{'is-invalid': submitted && f.prenom.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Telephone</ion-label>
+            <ion-input [(ngModel)]="telephone"
+                       formControlName="telephone"
+                       [ngClass]="{'is-invalid': submitted && f.telephone.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input [(ngModel)]="username"
+                       formControlName="username"
+                       [ngClass]="{'is-invalid': submitted && f.username.errors }" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Profil</ion-label>
+            <ion-select [(ngModel)]="profil"
+                        (ngModelChange)="optionChoised($event)"
+                        formControlName="profil"
+                        [ngClass]="{'is-invalid': submitted && f.profil.errors }" required>
+              <ion-select-option *ngFor="let profils of myProfil" value="{{profils.id}}">{{profils.libelle}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mot de passe</ion-label>
+            <ion-input type="password" [(ngModel)]="password"
+                       formControlName="password"
+                       [ngClass]="{'is-invalid': submitted && f.password.errors }" required></ion-input>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input [(ngModel)]="address"
+                       formControlName="address"
+                       [ngClass]="{'is-invalid': submitted && f.address.errors }" required></ion-input>
+          </ion-item>
+        </div>
+        <ion-button type="submit" [disabled]="!this.myForm.valid" expand="block" shape="round">Valider</ion-button>
+      </form>
+    </div>
+  </div>
 </ion-content>
+
+

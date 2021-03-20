@@ -28,9 +28,20 @@ export class ListSiegeService {
   myUsers(){
     return this.httpClient.get(`${ this.baseUrl }/users`) ;
   }
+  myProfils(){
+    return this.httpClient.get(`${ this.baseUrl }/profils`) ;
+  }
+
+  addUser(users: any): Observable<any>{
+    return this.httpClient.post(`${ this.baseUrl }/users`, users) ;
+  }
 
   myCompte(){
     return this.httpClient.get(`${ this.baseUrl }/comptes?statut=false`) ;
+  }
+
+  addCompte(compte: any){
+    return this.httpClient.post(`${ this.baseUrl }/comptes`, compte) ;
   }
 
   retourId(nomAgence): Observable<any> {

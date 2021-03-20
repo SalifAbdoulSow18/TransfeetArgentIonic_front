@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertController} from '@ionic/angular';
 import {TransactionsService} from '../../services/transactions.service';
 import {Router} from '@angular/router';
+import {ListSiegeService} from '../../services/list-siege.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-user',
@@ -21,13 +23,20 @@ export class AddUserPage implements OnInit {
   total: any;
   frais: any;
   donne: any;
+  myProfil: any;
+  idProfil: any;
   myForm: any = FormGroup ;
   submitted = false;
   constructor(private formBuilder: FormBuilder,
               public alertController: AlertController,
-              private transactionService: TransactionsService,
+              private userService: ListSiegeService,
               private router: Router
-  ) { }
+  ) {
+    this.userService.myProfils().subscribe(data => {
+      // console.log(data);
+      this.myProfil = data ;
+    }) ;
+  }
 
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
@@ -45,79 +54,43 @@ export class AddUserPage implements OnInit {
   get f(): any {
     return this.myForm.controls;
   }
+
+  optionChoised(id: any) {
+    this.idProfil = id;
+    // console.log(this.idProfil);
+  }
+
   // ma fonction pour le depot
   async onSubmit() {
     this.submitted = true;
     const formValue = this.myForm.value ;
     // console.log(formValue);
-    const infoDepot = {
-      CNI: formValue.cni,
-      nomComplet: formValue.nomComplet1,
-      phone: formValue.telephone1
+    const myUser = {
+      cni: formValue.cni,
+      nom: formValue.nom,
+      prenom: formValue.prenom,
+      username: formValue.username,
+      address: formValue.address,
+      phone: formValue.telephone,
+      password: formValue.password,
+      profil: 'api/profils/' + this.idProfil,
     };
-    const infoRetrait =  {
-      nomComplet: formValue.nomComplet2,
-      phone: formValue.telephone2
-    };
-    const myDepot = {
-      montant: formValue.montant,
-      clientRetrait: infoRetrait,
-      clientDepot : infoDepot,
-    };
-    // console.log(myDepot);
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Confirmation',
-      message: `EMETTEUR <br> <strong>${formValue.nomComplet1}</strong> <br>
-                TELEPHONE <br> <strong>${formValue.telephone1}</strong> <br>
-                N°CNI <br> <strong>${formValue.cni}</strong> <br>
-                MONTANT <br> <strong>${formValue.montant}</strong>fcfa <br>
-                RECEPTEUR <br> <strong>${formValue.nomComplet2}</strong> <br>
-                TELEPHONE <br> <strong>${formValue.telephone2}</strong> `,
-      buttons: [
-        {
-          text: 'annuler',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Confirmer',
-          handler: () => {
-            this.transactionService.transactionDepot(myDepot).subscribe(async reponse => {
-              this.donne = reponse.data;
-              // console.log(this.donne);
-              const conf = await this.alertController.create({
-                cssClass: 'my-custom-class',
-                header: 'Transfert réussi',
-                subHeader: 'Vous avez envoyé: ' + this.donne.montant +
-                  ' à ' + formValue.nomComplet2 + ' le ' + this.donne.dateDepot,
-                message: `CODE DE TRANSACTION  <br> <strong>${this.donne.codeTransaction}</strong> `,
-                buttons: ['OK']
-              });
-
-              await conf.present();
-              {
-                this.myForm.reset();
-              }
-            }, async (error) => {
-              const erreur = await this.alertController.create({
-                cssClass: 'my-custom-class',
-                header: 'Erreur',
-                message: 'Reverifiez vos données.',
-                buttons: ['OK']
-              });
-
-              await erreur.present();
-            });
-            // console.log('Confirm Okay');
-          }
-        }
-      ]
+    console.log(myUser);
+    this.userService.addUser(myUser).subscribe(async reponse => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1000
+      });
+      this.myForm.reset();
+      setTimeout(() => {this.router.navigate(['/list-user']); }, 1500);
+      console.log('good');
+    }, error => {
+      console.log(error);
     });
 
-    await alert.present();
   }
 
 }

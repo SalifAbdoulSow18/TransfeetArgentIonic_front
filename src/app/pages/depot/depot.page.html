@@ -95,7 +95,7 @@
             <div class="ion-text-center" style="color: red" *ngIf="submitted && f.telephone2.errors">
               <div *ngIf="f.telephone2.errors.required">Telephone is required!</div>
             </div>
-          <ion-button type="submit" expand="block" shape="round">Valider</ion-button>
+          <ion-button type="submit" [disabled]="!this.myForm.valid" expand="block" shape="round">Valider</ion-button>
         </div>
         </form>
       </div>

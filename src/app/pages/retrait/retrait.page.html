@@ -76,7 +76,7 @@
 
 
       </div>
-      <ion-button type="submit" expand="block" shape="round">Retirer</ion-button>
+      <ion-button type="submit" [disabled]="!this.myForm.valid" expand="block" shape="round">Retirer</ion-button>
       </form>
     </div>
   </div>
