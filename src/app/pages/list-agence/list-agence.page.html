@@ -25,7 +25,7 @@
             {{infocompte.agence.nomAgence}}
           </ion-text>
         </ion-col>
-        <ion-button color="danger">Bloquer</ion-button>
+        <ion-button (click)="removeCompte(infocompte.id)" color="danger">Bloquer</ion-button>
       </ion-row>
     </ion-grid>
   </div>

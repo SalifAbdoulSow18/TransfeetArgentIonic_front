@@ -67,6 +67,14 @@ export class ListSiegeService {
     ) ;
   }
 
+  deleteCompte(id: number): Observable<any> {
+    return this.httpClient.delete(`${ this.baseUrl }/comptes/` + id).pipe(
+      tap(() => {
+        this._refresNeeded$.next() ;
+      })
+    );
+  }
+
   annulerRecharge(): Observable<any> {
     return this.httpClient.delete(`${ this.baseUrl }/rechargeComptes/annuler`).pipe(
       tap(() => {

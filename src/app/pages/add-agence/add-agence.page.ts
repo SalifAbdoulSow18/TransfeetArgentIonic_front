@@ -89,7 +89,7 @@ export class AddAgencePage implements OnInit {
     }];
     const monAgence = {
       nomAgence: formValue.nomAgence,
-      latitude: formValue.latittude,
+      latittude: formValue.latittude,
       longitude: formValue.longitude,
       users: monUsers,
     };
