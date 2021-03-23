@@ -30,7 +30,7 @@ export class EntreprisePage implements OnInit {
       confirmButtonText: 'Yes, disconnect!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.authService.logout() ;
+        const val = this.authService.logout() ;
         this.router.navigate(['/login']) ;
       }
     });

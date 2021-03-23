@@ -13,13 +13,19 @@ export class RechargePage implements OnInit {
   tarif: any;
   nomAgence = '';
   idCompte: any;
-  constructor(private rechargement: ListSiegeService, public alertController: AlertController) {}
+  choiseAgence: any;
+  constructor(private rechargement: ListSiegeService, public alertController: AlertController) {
+    this.rechargement.myCompte().subscribe(data => {
+      console.log(data);
+      this.choiseAgence = data ;
+    }) ;
+  }
 
   ngOnInit() {
   }
-  InfoDepot($event: Event) {
+  InfoDepot(name: any) {
     const myId = {
-      nomAgence: this.nomAgence
+      nomAgence: name
     };
     // console.log(myCode);
     this.rechargement.retourId(myId).subscribe(response => {

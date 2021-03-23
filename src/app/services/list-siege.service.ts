@@ -26,7 +26,11 @@ export class ListSiegeService {
   }
 
   myUsers(){
-    return this.httpClient.get(`${ this.baseUrl }/users`) ;
+    return this.httpClient.get(`${ this.baseUrl }/users?statut=false`) ;
+  }
+
+  oneUsers(id: number){
+    return this.httpClient.get(`${ this.baseUrl }/users/` + id) ;
   }
   myProfils(){
     return this.httpClient.get(`${ this.baseUrl }/profils`) ;
@@ -34,6 +38,9 @@ export class ListSiegeService {
 
   addUser(users: any): Observable<any>{
     return this.httpClient.post(`${ this.baseUrl }/users`, users) ;
+  }
+  editUser(users: any, id: number): Observable<any>{
+    return this.httpClient.put(`${ this.baseUrl }/users/` + id, users) ;
   }
 
   myCompte(){

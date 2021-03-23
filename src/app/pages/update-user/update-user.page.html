@@ -1,0 +1,59 @@
+<ion-content>
+  <div class="container">
+    <div class="haut">
+      <div class="ion-text-center" >
+        <img src="assets/money_logo.png" alt="">
+      </div>
+      <div class="ion-text-center depot">
+        <ion-icon src="assets/icon/edit-user.svg"></ion-icon>
+        <ion-label>Edit Utilisateur</ion-label>
+      </div>
+      <hr>
+    </div>
+    <div class="content-form-depot">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <ion-item>
+          <ion-label position="floating">Num CNI</ion-label>
+          <ion-input [(ngModel)]="cni"
+                     formControlName="cni"
+                     [ngClass]="{'is-invalid': submitted && f.cni.errors }" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input [(ngModel)]="nom"
+                     formControlName="nom"
+                     [ngClass]="{'is-invalid': submitted && f.nom.errors }" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" >Prenom</ion-label>
+          <ion-input [(ngModel)]="prenom"
+                     formControlName="prenom"
+                     [ngClass]="{'is-invalid': submitted && f.prenom.errors }" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Telephone</ion-label>
+          <ion-input [(ngModel)]="telephone"
+                     formControlName="telephone"
+                     [ngClass]="{'is-invalid': submitted && f.telephone.errors }" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input [(ngModel)]="username"
+                     formControlName="username"
+                     [ngClass]="{'is-invalid': submitted && f.username.errors }" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input [(ngModel)]="address"
+                     formControlName="address"
+                     [ngClass]="{'is-invalid': submitted && f.address.errors }" required></ion-input>
+        </ion-item>
+        <ion-button type="submit" [disabled]="!this.myForm.valid" expand="block" shape="round">Valider</ion-button>
+      </form>
+    </div>
+
+  </div>
+</ion-content>
+
+

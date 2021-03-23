@@ -18,6 +18,16 @@ export class ListUserPage implements OnInit {
   }
 
   ngOnInit() {
+    // refresh table
+    this.users.refresNeeded$.subscribe(() => {
+      // tslint:disable-next-line:no-unused-expression
+      this.users.myUsers().subscribe(data => {
+        this.infoUsers = data ;
+      }) ;
+    });
+    this.users.myUsers().subscribe(data => {
+      this.infoUsers = data ;
+    }) ;
   }
 
 }

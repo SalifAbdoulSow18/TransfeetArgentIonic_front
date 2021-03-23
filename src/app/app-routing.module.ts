@@ -91,6 +91,10 @@ const routes: Routes = [
     path: 'all-transaction',
     loadChildren: () => import('./pages/all-transaction/all-transaction.module').then( m => m.AllTransactionPageModule)
   },
+  {
+    path: 'update-user',
+    loadChildren: () => import('./pages/update-user/update-user.module').then( m => m.UpdateUserPageModule)
+  },
 ];
 
 @NgModule({
