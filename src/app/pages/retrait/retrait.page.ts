@@ -114,7 +114,7 @@ export class RetraitPage implements OnInit {
                 const erreur = await this.alertController.create({
                   cssClass: 'my-custom-class',
                   header: 'Erreur',
-                  message: 'Reverifiez les données!!!',
+                  message: 'Redonnez votre numero svp!!!',
                   buttons: ['OK']
                 });
 

@@ -6,12 +6,19 @@
       </div>
       <div class="ion-text-center transaction">
         <ion-icon src="assets/icon/transaction.svg"></ion-icon>
-        <ion-label>Transaction</ion-label>
+        <ion-label>Transactions</ion-label>
       </div>
       <hr>
     </div>
 
     <div>
+      <ion-item>
+        <ion-label position="floating">Nom Agence</ion-label>
+        <ion-select (ngModelChange)="InfoDepot($event)"  [(ngModel)]="type">
+          <ion-select-option value="depot">depot</ion-select-option>
+          <ion-select-option value="retrait">retrait</ion-select-option>
+        </ion-select>
+      </ion-item>
       <ion-grid class="ion-text-center">
         <ion-row class="header-row">
           <ion-col>
@@ -30,7 +37,7 @@
           </ion-col>
           <ion-col>
             <ion-text>
-              Depot
+              {{type}}
             </ion-text>
           </ion-col>
           <ion-col>

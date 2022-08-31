@@ -47,7 +47,7 @@ export class DepotPage implements OnInit {
     };
     this.transactionService.calculFrais(auto).subscribe( reponse => {
      // @ts-ignore
-      if (this.montant !== '' && this.montant >= 1000 ) {
+      if (this.montant !== '' && this.montant >= 500 ) {
        this.frais = reponse;
        this.total = +this.montant - (+this.frais);
        this.ts = +this.montant + (+this.frais);

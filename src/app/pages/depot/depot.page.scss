@@ -106,3 +106,10 @@ ion-button {
   position: relative;
   float: right;
 }
+ion-content {
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

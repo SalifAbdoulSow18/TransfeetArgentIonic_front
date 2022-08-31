@@ -14,12 +14,12 @@
       <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div id="content-menu-choice" padding>
           <div class="content-menu" (click)="ShowAndHide(1)">
-            Emmetteur
+            InfoAgence
             <div class="menu-bar-bottom" [hidden]="hide"></div>
           </div>
 
           <div class="content-menu" (click)="ShowAndHide(2)">
-            Bénéficiare
+            InfoAdmin
             <div class="menu-bar-bottom" [hidden]="!hide"></div>
           </div>
         </div>

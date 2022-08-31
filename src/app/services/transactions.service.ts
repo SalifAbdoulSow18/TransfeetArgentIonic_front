@@ -45,6 +45,11 @@ export class TransactionsService {
     return this.httpClient.get(`${ this.baseUrl }/users/transaction/` + id ) ;
   }
 
+  myTransactionRetrait(id: number){
+    // @ts-ignore
+    return this.httpClient.get(`${ this.baseUrl }/users/transactionRetrait/` + id ) ;
+  }
+
   AllTransaction(){
     return this.httpClient.get(`${ this.baseUrl }/transactions`) ;
   }
